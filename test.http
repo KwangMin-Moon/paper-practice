@@ -1,0 +1,48 @@
+// 회원가입
+###
+POST http://127.0.0.1:5000/user/signup
+Content-Type: application/json
+
+{
+  "email": "hanghae1@naver.com",
+  "nickname": "항해991",
+  "password" : "12345678",
+  "confirmPassword": "12345678"
+}
+
+// 로그인
+###
+POST http://127.0.0.1:5000/user/login
+Content-Type: application/json
+
+{
+  "email": "hanghae1@naver.com",
+  "password" : "12345678"
+}
+
+// 이메일, 닉네임 중복 체크
+### 
+POST http://127.0.0.1:5000/user/idcheck
+Content-Type: application/json
+
+{
+  "nickname" : "항해99!"
+}
+
+// 예약 신청
+### 
+POST http://127.0.0.1:5000/api/booking/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1NzY5MDQ0MiwiZXhwIjoxNjU3NzAxMjQyfQ.4sBSvY_aNurCcK-hawrIxcdHKgS4jknPCV7X0AsuP7U
+Content-Type: application/json
+
+{
+  "leaf" : 1,
+  "guestId": "1",
+  "date": "Thu Jul 13 2022 21:00 GMT+09:00-Thu Jul 13 2022 22:00 GMT+09:00"
+}
+
+// 예약 조회
+### 
+GET  http://127.0.0.1:5000/api/booking
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1NzY5MDQ0MiwiZXhwIjoxNjU3NzAxMjQyfQ.4sBSvY_aNurCcK-hawrIxcdHKgS4jknPCV7X0AsuP7U
+Content-Type: application/json
