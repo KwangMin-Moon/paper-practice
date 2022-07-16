@@ -10,7 +10,7 @@ require('dotenv').config();
 const app = express();
 
 const UserRouter = require('./routes/user.route');
-// const PaperRouter = require('./dist/routes/paper.route');
+const PaperRouter = require('./dist/routes/paper.route');
 const BookingRouter = require('./routes/booking.route');
 // const ReviewRouter = require('./dist/routes/review.route');
 
@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/user', UserRouter);
-// app.use('/api/paper/', PaperRouter);
+app.use('/api/paper/', PaperRouter);
 app.use('/api/booking', BookingRouter);
 // app.use('/api/review', ReviewRouter);
 
