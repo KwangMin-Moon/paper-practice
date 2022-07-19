@@ -30,7 +30,7 @@ module.exports = (server) => {
       room = data.room;
 
       if (checkCounts(room) >= 2) {
-        return io.emit('roomfull');
+        return socket.emit('roomfull');
       }
       socket.join(room);
       console.log([
@@ -96,3 +96,11 @@ module.exports = (server) => {
     });
   });
 };
+
+/* 
+
+connection event handler function의 인자로 socket 객체가 전달된다. 
+socket 객체는 개별 클라이언트와의 interacting을 위한 기본적인 객체이다. 
+io 객체는 연결된 전체 클라이언트와의 interacting을 위한 객체이다.
+
+*/

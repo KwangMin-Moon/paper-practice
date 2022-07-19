@@ -10,7 +10,7 @@ require('dotenv').config();
 const app = express();
 
 const UserRouter = require('./routes/user.route');
-const PaperRouter = require('./dist/routes/paper.route');
+const PaperRouter = require('./routes/paper.route');
 const BookingRouter = require('./routes/booking.route');
 // const ReviewRouter = require('./dist/routes/review.route');
 
