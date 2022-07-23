@@ -3,18 +3,21 @@ const jwt = require('jsonwebtoken');
 //const nodemailer = require('nodemailer');
 const userService = require('../services/user.service');
 const passport = require('passport');
-const Validatorsinup = require('../middleware/signup.validator');
-const Validatorlogin = require('../middleware/login.validator');
+const { LoginSchema, SignupSchema } = require('../middlewares/login.validator');
 
 //회원가입
 const signup = async (req, res, next) => {
   try {
-    const { email, nickname, password } = await Validatorsinup.validateAsync(
-      req.body
-    );
+    const { email, nickname, password, blogId } =
+      await SignupSchema.validateAsync(req.body);
 
-    const rows = await userService.signup(email, nickname, password);
-    if (rows === false) {
+    const duplicate = await userService.signup(
+      email,
+      nickname,
+      password,
+      blogId
+    );
+    if (duplicate === false) {
       return res.status(200).send({
         result: false,
       });
@@ -33,7 +36,7 @@ exports.signup = signup;
 // 로그인
 const login = async (req, res, next) => {
   try {
-    const { email, password } = await Validatorlogin.validateAsync(req.body);
+    const { email, password } = await LoginSchema.validateAsync(req.body);
     const user = await userService.login(email);
     const passwordck = await Bcrypt.compare(password, user.password);
     const exuser = user.deletedAt;

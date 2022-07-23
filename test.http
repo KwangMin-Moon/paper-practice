@@ -5,7 +5,8 @@ Content-Type: application/json
 
 {
   "email": "hanghae1@naver.com",
-  "nickname": "항해991",
+  "nickname": "항해1",
+  "blogId": "Jason",
   "password" : "12345678",
   "confirmPassword": "12345678"
 }
@@ -45,4 +46,39 @@ Content-Type: application/json
 ### 
 GET  http://127.0.0.1:5000/api/booking
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1NzY5MDQ0MiwiZXhwIjoxNjU3NzAxMjQyfQ.4sBSvY_aNurCcK-hawrIxcdHKgS4jknPCV7X0AsuP7U
+Content-Type: application/json
+
+
+// 리뷰 작성
+### 
+POST   http://127.0.0.1:5000/api/review/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1ODU3NDAxNSwiZXhwIjoxNjU4NTg0ODE1fQ.97_ZNHLeER5uZJ6WvkjXBfgRBQZJKjNF38I_6-P4yLs
+Content-Type: application/json
+
+{
+  "review" : "좋아요",
+  "rate": 6
+}
+
+// 리뷰 조회
+### 
+GET    http://127.0.0.1:8000/api/review/abc12345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODIwNjQ4MCwiZXhwIjoxNjU4MjE3MjgwfQ.Wjv5AEipjs6151tfRmRk9Zpqw70w6GoBLYPveCrcIYM
+Content-Type: application/json
+
+// 리뷰 수정
+### 
+PUT   http://127.0.0.1:8000/api/review/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODQ3OTMxMCwiZXhwIjoxNjU4NDkwMTEwfQ.oIc_VivrHxbXLu-Y54wS1hzm7DQ1vYDhnqhswq3WaEw
+Content-Type: application/json
+
+{
+  "review" : "좋지 않아요",
+  "rate": 6
+}
+
+// 리뷰 삭제
+### 
+DELETE    http://127.0.0.1:8000/api/review/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODQ3OTMxMCwiZXhwIjoxNjU4NDkwMTEwfQ.oIc_VivrHxbXLu-Y54wS1hzm7DQ1vYDhnqhswq3WaEw
 Content-Type: application/json

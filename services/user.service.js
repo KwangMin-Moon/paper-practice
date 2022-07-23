@@ -4,11 +4,11 @@ const { Op } = sequelize;
 const { User } = require('../models');
 
 // 회원가입
-const signup = async (email, nickname, password) => {
+const signup = async (email, nickname, password, blogId) => {
   const duplicate = await User.findAll({
-    where: { [Op.or]: { email, nickname } },
+    where: { [Op.or]: { nickname, blogId } },
   });
-  // 이메일 || 닉네임 중복 체크
+  // blogId || 닉네임 중복 체크
   if (duplicate.length) {
     return false;
   }
@@ -16,7 +16,7 @@ const signup = async (email, nickname, password) => {
   const salt = await Bcrypt.genSalt();
   const pwhash = await Bcrypt.hash(password, salt);
 
-  await User.create({ email, nickname, password: pwhash });
+  await User.create({ email, nickname, password: pwhash, blogId });
 };
 exports.signup = signup;
 
